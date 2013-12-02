@@ -33,7 +33,7 @@ STATUS_STOPPING          = 'stopping'
 STATUS_STOPPED           = 'stopped'
 
 # All statuses that indicate a completed job
-COMPLETE_STATUSES = (\
+COMPLETE_STATUSES = (
     STATUS_SCRIPT_ERROR, 
     STATUS_PLAN_ERROR, 
     STATUS_SUCCESS, 
@@ -43,7 +43,7 @@ COMPLETE_STATUSES = (\
 
 def post_job_new_cluster(api, project_name, script_name, cluster_size, cluster_type=clusters.CLUSTER_TYPE_PERSISTENT,
                          git_ref='master', parameters=None, notify_on_job_finish=True, is_control_script=False,
-                         pig_version=None):
+                         pig_version=None, use_spot_instances=False):
     """
     Post a new job to a new cluster.
     
@@ -76,6 +76,9 @@ def post_job_new_cluster(api, project_name, script_name, cluster_size, cluster_t
     
     :type pig_version: string
     :param pig_version: Major version of pig to run.  If null, uses the Mortar platform default (currently 0.9).
+
+    :type use_spot_instances: bool
+    :param use_spot_instances: whether to launch a cluster using spot instances. Default: false.
     
     :raises: requests.exception.HTTPError: if a 40x or 50x error occurs
     
@@ -87,7 +90,8 @@ def post_job_new_cluster(api, project_name, script_name, cluster_size, cluster_t
             'cluster_size': cluster_size,
             'cluster_type': cluster_type,
             'parameters': parameters or {},
-            'notify_on_job_finish': notify_on_job_finish
+            'notify_on_job_finish': notify_on_job_finish,
+            'use_spot_instances': use_spot_instances
     }
     
     if is_control_script:        
