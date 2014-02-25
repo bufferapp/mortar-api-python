@@ -16,7 +16,7 @@ except IOError:
     long_description = ''
 
 setup(name='mortar-api-python',
-      version='0.1.0',
+      version='0.2.0',
       description='Python API for Mortar',
       long_description=long_description,
       author='Mortar Data',
