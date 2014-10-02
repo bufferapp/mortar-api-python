@@ -28,6 +28,9 @@ CLUSTER_TYPE_SINGLE_JOB = 'single_job'
 CLUSTER_TYPE_PERSISTENT = 'persistent'
 CLUSTER_TYPE_PERMANENT  = 'permanent'
 
+# Local cluster id
+LOCAL_CLUSTER_ID = "local"
+
 def get_clusters(api):
     """
     Get recent and running clusters.
