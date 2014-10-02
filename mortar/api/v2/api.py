@@ -19,6 +19,10 @@ import requests
 from requests.auth import HTTPBasicAuth
 from requests.exceptions import HTTPError
 
+import logging
+requests_log = logging.getLogger("requests")
+requests_log.setLevel(logging.WARNING)
+
 class API(object):
     """
     Represents a connection to the Mortar API.
