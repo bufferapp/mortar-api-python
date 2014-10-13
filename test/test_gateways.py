@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-import unittest
+import unittest2 as unittest
 
 from mortar.api.v2 import gateways
 
@@ -47,4 +47,3 @@ class TestClusters(unittest.TestCase):
         self.api_mock.get.side_effect = HTTPError('Message', response=response_mock_404)
         return_gateway = gateways.get_gateway(self.api_mock)
         self.assertIsNone(return_gateway)
-        
