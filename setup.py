@@ -22,5 +22,11 @@ setup(name='mortar-api-python',
       license='LICENSE.txt',
       install_requires=[
           'requests'
+      ],
+      test_suite="nose.collector",
+      tests_require=[
+          'mock',
+          'nose>=1.3.0',
+          'unittest2'
       ]
 )
