@@ -6,7 +6,7 @@ except:
 from distutils.core import setup
 
 setup(name='mortar-api-python',
-      version='0.2.2',
+      version='0.2.3',
       description='Python API for Mortar',
       long_description='Python API client for interacting with Mortar',
       author='Mortar Data',
