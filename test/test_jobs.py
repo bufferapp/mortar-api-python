@@ -34,6 +34,15 @@ class TestJobs(unittest.TestCase):
         actual_job_id = jobs.post_job_new_cluster(self.api_mock, self.project_name, self.script_name, cluster_size)
         self.assertEquals(expected_job_id, actual_job_id)
 
+    def test_post_job_new_cluster_with_pipeline_job_id(self):
+        cluster_size = 2
+        expected_job_id = 'abcdefghijklmnop'
+        pipeline_job_id = '10d83d8kfd8k38sf'
+        self.api_mock.post.return_value = {'job_id': expected_job_id}
+        actual_job_id = jobs.post_job_new_cluster(self.api_mock, self.project_name, self.script_name, cluster_size, 
+            pipeline_job_id=pipeline_job_id)
+        self.assertEquals(expected_job_id, actual_job_id)
+
     def test_post_web_job_new_cluster(self):
         cluster_size = 2
         expected_job_id = 'abcdefghijklmnop'
@@ -46,6 +55,15 @@ class TestJobs(unittest.TestCase):
         expected_job_id = 'abcdefghijklmnop'
         self.api_mock.post.return_value = {'job_id': expected_job_id}
         actual_job_id = jobs.post_job_new_cluster(self.api_mock, self.project_name, self.script_name, cluster_id)
+        self.assertEquals(expected_job_id, actual_job_id)
+
+    def test_post_job_existing_cluster_with_pipeline_job_id(self):
+        cluster_id = 'xyz123fdsa'
+        expected_job_id = 'abcdefghijklmnop'
+        pipeline_job_id = '10d83d8kfd8k38sf'
+        self.api_mock.post.return_value = {'job_id': expected_job_id}
+        actual_job_id = jobs.post_job_new_cluster(self.api_mock, self.project_name, self.script_name, cluster_id, 
+            pipeline_job_id=pipeline_job_id)
         self.assertEquals(expected_job_id, actual_job_id)
 
     def test_post_web_job_existing_cluster(self):
