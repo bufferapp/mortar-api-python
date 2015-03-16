@@ -15,12 +15,10 @@
 #
 
 import json
-import urllib3
-urllib3.disable_warnings()
-
 import requests
 from requests.auth import HTTPBasicAuth
 from requests.exceptions import HTTPError
+requests.packages.urllib3.disable_warnings()
 
 import logging
 requests_log = logging.getLogger("requests")
