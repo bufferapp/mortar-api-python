@@ -15,6 +15,9 @@
 #
 
 import json
+import urllib3
+urllib3.disable_warnings()
+
 import requests
 from requests.auth import HTTPBasicAuth
 from requests.exceptions import HTTPError
